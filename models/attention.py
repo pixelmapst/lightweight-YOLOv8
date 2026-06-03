@@ -12,6 +12,9 @@ class SE(nn.Module):
             nn.Linear(channels // reduction, channels),
             nn.Sigmoid(),
         )
+        # 初始化为恒等映射：bias=1 → sigmoid(1)≈0.73 → 接近 x*1，不破坏预训练特征
+        nn.init.zeros_(self.fc[-2].weight)
+        nn.init.constant_(self.fc[-2].bias, 2.0)
 
     def forward(self, x):
         b, c, h, w = x.shape
