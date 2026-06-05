@@ -4,7 +4,7 @@ from ultralytics import YOLO
 if __name__ == '__main__':
     model = YOLO("yolov8n.pt")
     results = model.train(
-        data="coco128.yaml",
+        data="VOC.yaml",
         epochs=50,
         imgsz=640,
         batch=4,
