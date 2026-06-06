@@ -8,8 +8,7 @@ tasks.SE = SE
 from ultralytics import YOLO
 
 if __name__ == '__main__':
-    model = YOLO("models/yolov8n.yaml")
-    model.load("yolov8n.pt")           
+    model = YOLO("runs/detect/train-6/weights/last.pt")          
     results = model.train(
         data="VOC.yaml",
         epochs=50,
